@@ -36,6 +36,11 @@ case go
 			echo 'bootfile='^$bootfile
 			echo 'bootcmd=plan9rc'
 			echo 'bootargs=local!'^$fs' '$"fsflags
+			if(~ $ethermethod manual){
+				echo 'ipaddress='^$ipaddr
+				echo 'gateway='^$gwaddr
+				echo 'ipmask='^$ipmask
+			}
 			if(~ $#password 1)
 				echo 'privpassword='^$password
 			if(~ $authservice yes)
