@@ -20,7 +20,7 @@ case go
 
 	switch($authservice){
 	case no
-		prompt 'Password: '
+		prompt 'Secure password for remote access: '
 		password=$rd
 		export password
 	case yes
