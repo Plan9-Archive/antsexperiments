@@ -102,6 +102,14 @@ To fix this, 9fs 9fat and edit /n/9fat/plan9.ini to include these variables:
 
 Set them to the numeric values that are appropriate so that the ipconfig in the boot process uses them.
 
+* The standard 9front 'fshalt' command doesn't know how to shut down the fossil file server, use 'foshalt' instead.
+
+There is a script included which does know how to stop a fossil server. Use
+
+	foshalt
+
+To sync and halt your fossil file server before reboot/shutdown if that is what you installed.
+
 * The /sys/src/ants directory's hgrc is owned by sys which means hg will give a trust error. You can either ignore that error and issue hg pull https://bitbucket.org/mycroftiv/antsexperiments to update it, or delete and recreate the file with the permissions of your user so a standard hg pull will work.
 
 * Updating and rebuilding the system using the 9front sysupdate command may result in the loss of some ANTS features, and require rebuilding/reinstalling some of the ANTS toolkit, because ANTS attempts to mostly contain its modifications and not overwrite the standard distribution, so for instance the customized rc with rfork V available will be overwritten if the system is rebuilt with a standard mk install in /sys/src. 

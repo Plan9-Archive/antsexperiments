@@ -1,0 +1,44 @@
+--- /sys/src/libauthsrv/readnvram.c	Sat Dec 31 23:31:25 2016
++++ readnvram2.c	Sat Dec 30 02:37:45 2017
+@@ -246,18 +246,40 @@
+ 	if((flag&(NVwrite|NVwritemem)) || (err && (flag&NVwriteonerr))){
+ 		if (!(flag&NVwritemem)) {
+ 			char pass[PASSWDLEN];
++			char pass2[PASSWDLEN];
++			char seckey[CONFIGLEN];
++			char seckey2[CONFIGLEN];
+ 			Authkey k;
+ 
+ 			if(ask("authid", safe->authid, sizeof safe->authid, 0))
+ 				goto Out;
+ 			if(ask("authdom", safe->authdom, sizeof safe->authdom, 0))
+ 				goto Out;
+-			if(ask("secstore key", safe->config, sizeof safe->config, 1))
++Retrysec:
++			if(ask("secstore key", seckey, sizeof seckey, 1))
+ 				goto Out;
++			if(ask("retype secstore key", seckey2, sizeof seckey, 1))
++				goto Out;
++			if((strcmp(seckey, seckey2) != 0)){
++				fprint(2, "secstore key didn't match\n");
++				goto Retrysec;
++			}
++Retrypass:
+ 			if(ask("password", pass, sizeof pass, 1))
+ 				goto Out;
++			if(ask("retype password", pass2, sizeof pass, 1))
++				goto Out;
++			if((strcmp(pass, pass2) != 0)){
++				fprint(2, "password didn't match\n");
++				goto Retrypass;
++			}
++			
++			memmove(safe->config, seckey, CONFIGLEN);
++			memset(seckey, 0, sizeof seckey);
++			memset(seckey2, 0, sizeof seckey);
+ 			passtokey(&k, pass);
+ 			memset(pass, 0, sizeof pass);
++			memset(pass2, 0, sizeof pass);
+ 			memmove(safe->machkey, k.des, DESKEYLEN);
+ 			memmove(safe->aesmachkey, k.aes, AESKEYLEN);
+ 			memset(&k, 0, sizeof k);
