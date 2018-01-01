@@ -15,7 +15,8 @@ case terminal
 	echo -n 'res 3' > '#m/mousectl'
 	prompt=('term% ' '	')
 	fn term%{ $* }
-	rio -i riostart
+	grio -s -e -c 0xaabbff99 -y 0 -w 2 -i riostart
+#	rio -i riostart
 case cpu
 	bind /mnt/term/dev/cons /dev/cons
 	bind -q /mnt/term/dev/consctl /dev/consctl
