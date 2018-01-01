@@ -24,6 +24,7 @@ sleep 1
 
 c=`{ls /srv/cwfs*cmd >[2]/dev/null}
 h=`{ls /srv/hjfs*cmd >[2]/dev/null}
+f=`{ls /srv/fscons* >[2]/dev/null}
 
 # for scram, don't scram other systems
 bind -b '#P' /dev
@@ -32,6 +33,22 @@ if(! ~ $reboot yes){
 		scram=yes
 	if (test -e '#P'/acpitbls -a -e '#P'/iow)
 		scram=yes
+}
+
+for(i in $f){
+	echo -n $i
+	venti/sync -h localhost >[2]/dev/null &
+	venti/sync  >[2]/dev/null &
+	sleep 2
+	echo -n '...sync...'
+	{
+		echo
+		echo 'fsys all sync'
+		sleep 4
+	} < $i >> $i
+	venti/sync -h localhost >[2]/dev/null &
+	venti/sync  >[2]/dev/null &
+	sleep 2
 }
 
 # halting (binaries we run can't be on the fs we're halting)
@@ -62,6 +79,10 @@ fn x {
 		echo -n $i
 		echo halt >>$i
 		sleep 2
+	}
+	for(i in $f){
+		echo halt >>$i
+		sleep 3
 	}
 	echo
 	echo done halting
