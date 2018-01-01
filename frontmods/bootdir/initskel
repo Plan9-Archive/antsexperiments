@@ -38,7 +38,7 @@ fn getans{
 ##	set vars and quiz user if interactive=yes
 
 keyowner=`{cat /dev/hostowner}
-if (! ~ $keyowner ?*){
+if (~ $#keyowner 0){
 	echo please set hostowner
 	exit no.hostowner
 }
@@ -108,7 +108,7 @@ if(~ $hostfactotum no){
 	/boot/factotum -x -a $authip -s hostfactotum
 	echo private hostfactotum started
 	mount -b /srv/hostfactotum /mnt
-	if(! ~ $privpassword ''){
+	if(! ~ $#privpassword 0){
 		echo 'setting '$keyowner' factotum key'
 		echo 'key proto=dp9ik dom='$passdom' user='$keyowner' !password='^$privpassword >/mnt/factotum/ctl
 		rm /env/privpassword
@@ -120,7 +120,7 @@ if(~ $hostfactotum no){
 
 if(! ~ $netsvc no){
 	if(! test -e /net/ipifc/0/ctl){
-		if(~ $gateway ?*)
+		if(! ~ $#gateway 0)
 			ipparams=( -g $gateway ether /net/ether0 $ipaddress $ipmask )
 		echo -n 'ipconfig ' $ipparams '...'
 		ip/ipconfig $ipparams
@@ -140,7 +140,7 @@ if(! ~ $hubsvc no){
 }
 
 if(! ~ $cpusvc no){
-	if(~ $cpuport '')
+	if(~ $#cpuport 0)
 		cpuport=17060
 	echo 'aux/listen1 '$cpuport' rcpu rexexec...'
 	aux/listen1 -t tcp!*!$cpuport tlssrv -a /bin/rc -c server &
@@ -164,7 +164,7 @@ if(~ $unprivileged no){
 	aux/listen1 -tv tcp!*!567 authsrv -d &
 }
 
-if(~ $font ''){
+if(~ $#font 0){
 	font=/lib/font/bit/lucm/latin1.9.font
 }
 

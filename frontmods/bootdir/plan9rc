@@ -182,7 +182,7 @@ fn dotryusb{
 
 fn ipsetup{
 	if(! test -e /net/ipifc/0/ctl){
-		if(~ $gateway ?*)
+		if(! ~ $#gateway 0)
 			ipparams=( -g $gateway ether /net/ether0 $ipaddress $ipmask )
 		echo ipconfig $ipparams
 		ip/ipconfig $ipparams
