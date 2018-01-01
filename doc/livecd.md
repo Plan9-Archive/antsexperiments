@@ -108,9 +108,9 @@ There is a script included which does know how to stop a fossil server. Use
 
 	foshalt
 
-To sync and halt your fossil file server before reboot/shutdown if that is what you installed.
+To sync and halt your fossil file server before reboot/shutdown if that is what you installed. Alternatively, you can update /sys/src/ants via hg pull && hg update and copy the edited fshalt from frontmods/rcbin/fshalt to your /rc/bin directory. It will be included in the next release. There is also a version of '9fs' which understands how to correctly mount the archival dump from fossil with '9fs dump'.
 
-* The /sys/src/ants directory's hgrc is owned by sys which means hg will give a trust error. You can either ignore that error and issue hg pull https://bitbucket.org/mycroftiv/antsexperiments to update it, or delete and recreate the file with the permissions of your user so a standard hg pull will work.
+* The /sys/src/ants directory's hgrc is owned by sys which means hg will give a trust error. For some reason this only happens with cwfs/hjfs, not fossil. You can either ignore that error and issue hg pull https://bitbucket.org/mycroftiv/antsexperiments to update it, or delete and recreate the file with the permissions of your user so a standard hg pull will work.
 
 * Updating and rebuilding the system using the 9front sysupdate command may result in the loss of some ANTS features, and require rebuilding/reinstalling some of the ANTS toolkit, because ANTS attempts to mostly contain its modifications and not overwrite the standard distribution, so for instance the customized rc with rfork V available will be overwritten if the system is rebuilt with a standard mk install in /sys/src. 
 
