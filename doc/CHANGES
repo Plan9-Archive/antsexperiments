@@ -1,0 +1,9 @@
+First live/install cd release 17-12-30.
+
+Fixed bug where manual ethernet config done in installer was ignored by ipconfig at boot
+Added fossil support to fshalt and 9fs dump scripts
+Added standard rcpu port listener to termrc
+Added flag to suppress exit menu option in grio
+Added grio to default Glenda profile
+Added grio manpage
+Updated patched factotum files and diffs to reflect 9front changes

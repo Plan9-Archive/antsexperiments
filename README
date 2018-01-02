@@ -53,10 +53,12 @@ basic sequence:
 To allow you to select between kernels at boot, you can set bootfile=
 in plan9.ini to not provide a value.  Then at boot you will have to
 type "bootfile=9ants" or "bootfile=9pcf" (assuming that is your
-original kernel name) and then "boot".  You will probably want to set
-"tgzfs=tools.tgz" and possibly "bootcmd=plan9rc".  frontmods/plan9.ini
-has a minimal example that works with a fresh cwfs install to a qemu
-vm.
+original kernel name) and then "boot".  You may want to set
+"bootcmd=plan9rc".  if you set "privpassword=" to something in
+plan9.ini, a cpu listener on port 17060 will be started to allow
+hostowner cpu/drawterm to the ants boot/admin namespace.
+frontmods/plan9.ini has a minimal example that works with a fresh cwfs
+install to a qemu vm.
 
 You may also wish to change "rio" to "grio" in your profile.
 

@@ -25,12 +25,13 @@ privpassword=APASS #optional hostowner password without auth server
 ## documentation
 
 window -m page doc/ants.ps
-nroff -man doc/man.plan9rc
-nroff -man doc/man.rerootwin
-nroff -man doc/man.hubfs
-nroff -man doc/man.ventiprog
-nroff -man doc/man.cpns
-nroff -man doc/man.addwrroot
+nroff -man sys/man/8/plan9rc
+nroff -man sys/man/1/rerootwin
+nroff -man sys/man/1/hubfs
+nroff -man sys/man/1/grio
+nroff -man sys/man/8/ventiprog
+nroff -man sys/man/1/cpns
+nroff -man sys/man/1/addwrroot
 
 ## 9front customization files
 

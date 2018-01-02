@@ -70,9 +70,6 @@ build vultr - installs to a clean vultr install (hjfs recommended)
 build vultrfossil - installs to a custom-partitioned 9front vultr install
 changes system to use venti+fossil
 
-build frontuninstall - uninstall installed userspace components.  does
-not change 9fat
-
 bell labs build script modes
 ----------------------------
 
@@ -128,6 +125,7 @@ bootup
 revisions may work as well, these were tested during the development
 process)
 
+hg up -r599 builds vs 9front 6299
 hg up -r569 builds vs 9front 6277
 hg up -r534 builds vs 9front 6261
 hg up -r515 builds vs 9front 5736
