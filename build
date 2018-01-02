@@ -192,6 +192,7 @@ if(~ $1 fronthost){
 	cp /sys/man/2/fork /sys/man/2/fork.orig
 	cp /sys/man/3/srv /sys/man/3/srv.orig
 	cp /sys/man/3/proc /sys/man/3/proc.orig
+	cp sys/man/1/grio /sys/man/1/grio
 	cp sys/man/1/cpns /sys/man/1/cpns
 	cp sys/man/1/rerootwin /sys/man/1/rerootwin
 	cp sys/man/1/addwrroot /sys/man/1/addwrroot
@@ -238,6 +239,7 @@ if(~ $1 9frontinstall){
 	cp /sys/man/2/fork /sys/man/2/fork.orig
 	cp /sys/man/3/srv /sys/man/3/srv.orig
 	cp /sys/man/3/proc /sys/man/3/proc.orig
+	cp sys/man/1/grio /sys/man/1/grio
 	cp sys/man/1/cpns /sys/man/1/cpns
 	cp sys/man/1/rerootwin /sys/man/1/rerootwin
 	cp sys/man/1/addwrroot /sys/man/1/addwrroot
