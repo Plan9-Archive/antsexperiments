@@ -1,5 +1,5 @@
---- /sys/src/cmd/auth/factotum/dat.h	Thu Aug  4 20:56:46 2016
-+++ ../frontmods/patched/factotumdat.h	Fri Dec 22 02:26:47 2017
+--- /sys/src/cmd/auth/factotum/dat.h	Tue Jan  2 09:53:47 2018
++++ ../frontmods/patched/factotumdat.h	Tue Jan  2 10:07:20 2018
 @@ -150,6 +150,7 @@
  extern	int		askforkeys;
  extern	char		*authaddr[8];	/* bootstrap auth servers */

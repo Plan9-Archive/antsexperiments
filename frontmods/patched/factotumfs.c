@@ -18,7 +18,7 @@ extern Srv		fs;
 static void		notifyf(void*, char*);
 static void		private(void);
 
-char	Easproto[]		= "auth server protocol botch";
+char Easproto[]		= "auth server protocol botch";
 char Ebadarg[]		= "invalid argument";
 char Ebadkey[]		= "bad key";
 char Enegotiation[]	= "negotiation failed, no common protocols or keys";
@@ -39,10 +39,8 @@ prototab[] =
 	&p9sk1,
 	&dp9ik,
 	&pass,
-/*	&srs, */
 	&rsa,
 	&vnc,
-	&wep,
 	&ecdsa,
 	&wpapsk,
 	nil,
